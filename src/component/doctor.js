@@ -1,16 +1,13 @@
-
 import React from "react";
 import { useState } from "react";
-import axios from 'axios'
-import passwordValidation  from "./PasswordValidation";
+import axios from "axios";
+import passwordValidation from "./PasswordValidation";
 import { TextField } from "@material-ui/core";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
-import Date from "../date";
 
-
-export default function Signup ()  {
+export default function Signup() {
   const [formData, setFormData] = useState({
     fullName: "",
     gender: "male",
@@ -20,69 +17,61 @@ export default function Signup ()  {
     createpassword: "",
     confirmpassword: "",
   });
-  const [success,setSuccess] = useState(false)
-const [nameError, setNameError] = useState(false);
-  const [emailError, setEmailError] = useState(false)
+  const [success, setSuccess] = useState(false);
+  const [nameError, setNameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
   const [mobileError, setMobileError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [confirmpasswordError, setConfirmPasswordError] = useState(false);
 
-
- const checkFullName = () => {
-   setNameError(false);
-   if (checkEmpty(formData.fullName)) {
-     setNameError("Please enter a valid name!");
-   }
+  const checkFullName = () => {
+    setNameError(false);
+    if (checkEmpty(formData.fullName)) {
+      setNameError("Please enter a valid name!");
+    }
   };
   function checkEmpty(field) {
     return !/(.|\s)*\S(.|\s)*/.test(field);
   }
-
 
   const checkEmail = async () => {
     setEmailError(false);
     if (checkEmpty(formData.email)) {
       setEmailError("Please enter a valid email!");
     }
-    await axios.get(`http://my-doctors.net:8090/accounts?email=${formData.email}`).catch(error => setEmailError("Email already exists"))
+    await axios
+      .get(`http://my-doctors.net:8090/accounts?email=${formData.email}`)
+      .catch((error) => setEmailError("Email already exists"));
   };
 
+  const checkMobile = async () => {
+    setMobileError(false);
+    if (checkEmpty(formData.mobile)) {
+      setMobileError("Please enter a valid 10-digit mobile number!");
+    }
+    await axios
+      .get(
+        `http://my-doctors.net:8090/accounts?contactNumber=${formData.mobile}`
+      )
+      .catch((error) => setMobileError("Mobile number already exists"));
+  };
 
-  
-   const checkMobile = async () => {
-     setMobileError(false);
-     if (checkEmpty(formData.mobile)) {
-       setMobileError("Please enter a valid 10-digit mobile number!");
-     }
-     await axios
-       .get(
-         `http://my-doctors.net:8090/accounts?contactNumber=${formData.mobile}`
-       )
-       .catch((error) =>
-         setMobileError("Mobile number already exists")
-       );
-   };
-
-const checkPassword = () => {
-  setPasswordError(false);
-  setPasswordError(passwordValidation(formData.createpassword));
-};
+  const checkPassword = () => {
+    setPasswordError(false);
+    setPasswordError(passwordValidation(formData.createpassword));
+  };
 
   const checkConfirmPassword = () => {
     setConfirmPasswordError(false);
-     if (checkEmpty(formData.confirmpassword)) {
-       setConfirmPasswordError("Confirm password cannot be empty!");
-    }
-   else if (formData.createpassword !== formData.confirmpassword) {
+    if (checkEmpty(formData.confirmpassword)) {
+      setConfirmPasswordError("Confirm password cannot be empty!");
+    } else if (formData.createpassword !== formData.confirmpassword) {
       setConfirmPasswordError("Passwords do not match");
     } else {
       setPasswordError("");
     }
+  };
 
- }
-  
- 
-  
   passwordValidation();
 
   const handleChange = (e) => {
@@ -92,28 +81,23 @@ const checkPassword = () => {
     }));
   };
 
-   
-  
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  console.log(formData);  
-  try {
-    const res = await axios.post("http://my-doctors.net:8090/patients", {
-      firstName: formData.fullName,
-      gender: formData.gender,
-      profile: {
-        dob: formData.dob,
-      },
-      email: formData.email,
-      password: formData.createpassword,
-      contactNumber: formData.mobile,
-    });
-    setSuccess(true);
-  } catch (error) {
-    
-  }
-};
-
+    e.preventDefault();
+    console.log(formData);
+    try {
+      const res = await axios.post("http://my-doctors.net:8090/patients", {
+        firstName: formData.fullName,
+        gender: formData.gender,
+        profile: {
+          dob: formData.dob,
+        },
+        email: formData.email,
+        password: formData.createpassword,
+        contactNumber: formData.mobile,
+      });
+      setSuccess(true);
+    } catch (error) {}
+  };
 
   return (
     <Paper>
@@ -130,12 +114,9 @@ const checkPassword = () => {
 
             <form onSubmit={handleSubmit}>
               <div className="signupbox">
-
-                <Date />
                 <div>
                   <label>Name*</label>
                 </div>
-
                 <TextField
                   placeholder="Enter name"
                   required
@@ -155,34 +136,30 @@ const checkPassword = () => {
                 <div>
                   <label>Gender*</label>
                 </div>
-                <div>
-                  <input
-                    type="radio"
-                    name="gender"
-                    value="male"
-                    checked={formData.gender === "male"}
-                    onChange={handleChange}
-                  />
-                  <span className="radiobtn"> Male </span>
-                  <input
-                    className="radiobtn"
-                    type="radio"
-                    name="gender"
-                    value="female"
-                    checked={formData.gender === "female"}
-                    onChange={handleChange}
-                  />
-                  <span className="radiobtn"> Female </span>
-                  <input
-                    className="radiobtn"
-                    type="radio"
-                    name="gender"
-                    value="other"
-                    checked={formData.gender === "other"}
-                    onChange={handleChange}
-                  />
-                  <span className="radiobtn"> Other </span>
-                </div>
+                <input
+                  type="radio"
+                  name="gender"
+                  value="male"
+                  checked={formData.gender === "male"}
+                  onChange={handleChange}
+                />
+                Male
+                <input
+                  type="radio"
+                  name="gender"
+                  value="female"
+                  checked={formData.gender === "female"}
+                  onChange={handleChange}
+                />
+                Female
+                <input
+                  type="radio"
+                  name="gender"
+                  value="other"
+                  checked={formData.gender === "other"}
+                  onChange={handleChange}
+                />
+                Other
               </div>
 
               <div className="signupbox">
@@ -204,20 +181,6 @@ const checkPassword = () => {
                 {mobileError && (
                   <span style={{ color: "red" }}>{mobileError}</span>
                 )}
-              </div>
-
-              <div className="signupbox">
-                <div>
-                  <label>Date of Birth*</label>
-                </div>
-                <TextField
-                  type="date"
-                  name="dob"
-                  fullWidth
-                  variant="outlined"
-                  value={formData.dob}
-                  onChange={handleChange}
-                />
               </div>
 
               <div className="signupbox">
@@ -283,7 +246,7 @@ const checkPassword = () => {
               </button>
               <div className="signupnavigate">
                 Already have an account?
-                <Link to="/signup" style={{ textDecoration: "none" }}>
+                <Link to="/login" style={{ textDecoration: "none" }}>
                   <b> Sign in</b>
                 </Link>
               </div>
@@ -298,6 +261,4 @@ const checkPassword = () => {
       </Grid>
     </Paper>
   );
-  };
-
-
+}
