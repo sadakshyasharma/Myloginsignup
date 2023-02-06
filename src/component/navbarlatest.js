@@ -8,6 +8,9 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { BrowserRouter as Router } from "react-router-dom";
 
+// import {TabContext} from "@mui/lab/TabContext";
+// import {TabList} from "@mui/lab/TabList";
+// import {TabPanel} from "@mui/lab/TabPanel";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,30 +29,28 @@ const Navbar = () => {
   };
   return (
     <Paper>
-      <Grid container>
+      <Box sx={{ width: "100%" }}>
+        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            // aria-label="basic tabs example"
+          >
+            <Tab label="Item One" component={Link} to="/login" />
+            <Tab label="Item Two" component={Link} to="/signup" />
+            <Tab label="Item Three" component={Link} to="/doctor" />
+          </Tabs>
+        </Box>
+      </Box>
+      {/* <Grid container>
         <Grid xs={5}>
           <div></div>
         </Grid>
 
         <Grid xs={6}>
-          <Box sx={{ width: "100%" }}>
-            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-              <div className="logsign">
-                <Tabs
-                  value={value}
-                  onChange={handleChange}
-                  // aria-label="basic tabs example"
-                >
-                    <Tab label="Log In" component={Link} to="/login" />
-                  
-                  <Tab label="Patient Sign Up" component={Link} to="/signup" />
-                  <Tab label="Doctor Sign Up" component={Link} to="/doctor" />
-                </Tabs>
-              </div>
-            </Box>
-          </Box>
+          <div className="logsign"></div>
         </Grid>
-      </Grid>
+      </Grid> */}
     </Paper>
   );
 };

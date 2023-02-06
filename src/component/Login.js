@@ -5,16 +5,24 @@ import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import Navbar from "./Navbar";
-import BasicTabs from "../BasicTabs";
+import { Router } from "react-router-dom";
+// import BasicTabs from "../BasicTabs";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+import dashboard from "./dashboard";
+
+
+
+const Login = ({setUser}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState(false);
-
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!email || !password) return;
+
     console.log(email, password);
     try {
       const res = await axios.post(
@@ -26,6 +34,10 @@ const Login = () => {
         }
       );
       setSuccess(true);
+      if (res.data.user.role === "patient") { navigate("./dashboard"); }
+      else {
+        navigate("/ddashboard");
+      }
     } catch (error) {}
   };
 
@@ -39,6 +51,9 @@ const Login = () => {
         </Grid>
 
         <Grid item xs={7}>
+          {/* <Router>
+            <Navbar />
+          </Router> */}
           <div className="sectionlogin">
             <form onSubmit={handleSubmit}>
               <div className="loginbox">

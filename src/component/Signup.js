@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import Date from "../date";
 
 
+
 export default function Signup ()  {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -49,7 +50,10 @@ const [nameError, setNameError] = useState(false);
 
 
   
-   const checkMobile = async () => {
+  const checkMobile = async () => {
+    // if (formData.mobile.length > 10) {
+    //    setMobileError("Please enter a valid 10-digit mobile number!");
+    //  }
      setMobileError(false);
      if (checkEmpty(formData.mobile)) {
        setMobileError("Please enter a valid 10-digit mobile number!");
@@ -130,8 +134,7 @@ const checkPassword = () => {
 
             <form onSubmit={handleSubmit}>
               <div className="signupbox">
-
-                <Date />
+                {/* <Date /> */}
                 <div>
                   <label>Name*</label>
                 </div>
@@ -140,7 +143,7 @@ const checkPassword = () => {
                   placeholder="Enter name"
                   required
                   type="text"
-                  maxLength="50"
+                  inputProps={{ maxLength: 50 }}
                   name="fullName"
                   fullWidth
                   value={formData.fullName}
@@ -157,13 +160,14 @@ const checkPassword = () => {
                 </div>
                 <div>
                   <input
+                    className="radiobtn"
                     type="radio"
                     name="gender"
                     value="male"
                     checked={formData.gender === "male"}
                     onChange={handleChange}
                   />
-                  <span className="radiobtn"> Male </span>
+                  <span className="radiobtntext"> Male </span>
                   <input
                     className="radiobtn"
                     type="radio"
@@ -172,7 +176,7 @@ const checkPassword = () => {
                     checked={formData.gender === "female"}
                     onChange={handleChange}
                   />
-                  <span className="radiobtn"> Female </span>
+                  <span className="radiobtntext"> Female </span>
                   <input
                     className="radiobtn"
                     type="radio"
@@ -181,7 +185,7 @@ const checkPassword = () => {
                     checked={formData.gender === "other"}
                     onChange={handleChange}
                   />
-                  <span className="radiobtn"> Other </span>
+                  <span className="radiobtntext"> Other </span>
                 </div>
               </div>
 
@@ -193,7 +197,7 @@ const checkPassword = () => {
                   placeholder="Enter mobile number"
                   required
                   type="text"
-                  maxLength="10"
+                  inputProps={{ maxLength: 10 }}
                   name="mobile"
                   fullWidth
                   value={formData.mobile}
@@ -283,7 +287,7 @@ const checkPassword = () => {
               </button>
               <div className="signupnavigate">
                 Already have an account?
-                <Link to="/signup" style={{ textDecoration: "none" }}>
+                <Link to="/login" style={{ textDecoration: "none" }}>
                   <b> Sign in</b>
                 </Link>
               </div>

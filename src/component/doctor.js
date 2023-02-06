@@ -85,7 +85,7 @@ export default function Signup() {
     e.preventDefault();
     console.log(formData);
     try {
-      const res = await axios.post("http://my-doctors.net:8090/patients", {
+      const res = await axios.post("http://my-doctors.net:8090/doctors", {
         firstName: formData.fullName,
         gender: formData.gender,
         profile: {
@@ -136,31 +136,36 @@ export default function Signup() {
                 <div>
                   <label>Gender*</label>
                 </div>
-                <input
-                  type="radio"
-                  name="gender"
-                  value="male"
-                  checked={formData.gender === "male"}
-                  onChange={handleChange}
-                />
-                Male
-                <input
-                  type="radio"
-                  name="gender"
-                  value="female"
-                  checked={formData.gender === "female"}
-                  onChange={handleChange}
-                />
-                Female
-                <input
-                  type="radio"
-                  name="gender"
-                  value="other"
-                  checked={formData.gender === "other"}
-                  onChange={handleChange}
-                />
-                Other
-              </div>
+                <div>
+                  <input
+                    className="radiobtn"
+                    type="radio"
+                    name="gender"
+                    value="male"
+                    checked={formData.gender === "male"}
+                    onChange={handleChange}
+                  />
+                  <span className="radiobtntext"> Male </span>
+                  <input
+                    className="radiobtn"
+                    type="radio"
+                    name="gender"
+                    value="female"
+                    checked={formData.gender === "female"}
+                    onChange={handleChange}
+                  />
+                  <span className="radiobtntext"> Female </span>
+                  <input
+                    className="radiobtn"
+                    type="radio"
+                    name="gender"
+                    value="other"
+                    checked={formData.gender === "other"}
+                    onChange={handleChange}
+                  />
+                  <span className="radiobtntext"> Other </span>
+                </div>
+                </div>
 
               <div className="signupbox">
                 <div>

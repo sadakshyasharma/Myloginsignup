@@ -24,11 +24,11 @@ const Date=()=> {
         <DropdownDate
           startDate={
             // optional, if not provided 1900-01-01 is startDate
-            "2012-01-01" // 'yyyy-mm-dd' format only
+            "1960-01-01" // 'yyyy-mm-dd' format only
           }
           endDate={
             // optional, if not provided current date is endDate
-            "2012-01-01" // 'yyyy-mm-dd' format only
+            "2023-02-06" // 'yyyy-mm-dd' format only
           }
           selectedDate={
             // optional

@@ -7,6 +7,8 @@ flex-direction: column;
   padding: 70px;
   border: 1px solid rgb(209, 209, 209);
   border-radius: 5px;
+  margin-top: 20px;
+  margin-left: 10px;
 }
 
 .imagelogin{
@@ -23,7 +25,8 @@ display: flex;
 justify-content: flex-end;
 flex-direction: column;
   width: 50%;
-  margin: 0 auto;
+  margin-top: 20px;
+  margin-left: 150px;
   padding: 70px;
   border: 1px solid rgb(209, 209, 209);
   border-radius: 5px;
@@ -121,12 +124,31 @@ p {
 
 .logsign {
   display: flex;
+     flex-direction: column;
   justify-content: space-around;
   align-items: center;
   padding: 5px;
   font-weight: bolder;
   font-size: x-large;
+  margin-top: 50px;
+ 
+  
 }
+
+.logsign .MuiTabs-flexContainer {
+   width: 50%;
+}
+.logsign .MuiTab-root {
+   width: 50%;
+   height: 50px;
+   text-align: center;
+     /* border: 1px solid rgb(209, 209, 209);
+  border-radius: 1px; */
+}
+
+
+
+
 
 .navbar-link {
   color: #333;
@@ -160,6 +182,30 @@ margin-left: 10px;
     font-weight: 400;
     line-height: 1.5;
     letter-spacing: 0.00938em;
+    width: 20px;
+    height: 16px;
+   
+    
+}
+.radiobtntext{
+  font-size: 1rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+    width: 20px;
+    height: 16px;
+    
+}
+
+.nav{
+   border: 1px solid rgb(209, 209, 209);
+   border-radius: 1px;
+  display: flex;
+justify-content: flex-end;
+flex-direction: column;
+width: 200px;
+
 }
 
 /* .dobs{
