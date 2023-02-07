@@ -10,7 +10,7 @@ import { Router } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-import dashboard from "./dashboard";
+
 
 
 
@@ -34,7 +34,7 @@ const Login = ({setUser}) => {
         }
       );
       setSuccess(true);
-      if (res.data.user.role === "patient") { navigate("./dashboard"); }
+      if (res.data.user.role === "patient") { navigate("/pdashboard"); }
       else {
         navigate("/ddashboard");
       }
@@ -44,16 +44,17 @@ const Login = ({setUser}) => {
   return (
     <Paper>
       <Grid container>
-        <Grid item xs={5}>
+        <Grid item xs={6}>
           <div>
             <img src="login.svg" />
           </div>
         </Grid>
 
-        <Grid item xs={7}>
+        <Grid item xs={6}>
           {/* <Router>
             <Navbar />
           </Router> */}
+          <Navbar currentTab={0}/>
           <div className="sectionlogin">
             <form onSubmit={handleSubmit}>
               <div className="loginbox">

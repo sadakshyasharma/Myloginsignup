@@ -5,18 +5,18 @@ import Login from './component/Login';
 import Navbar from './component/Navbar';
 import Signup from './component/Signup';
 import Doctor from './component/doctor';
+
 import "./App.css"
 function App() {
   const [user, setUser] = useState(null);
   return (
     <>
-      
       <Router>
-        <Navbar />
+      
         <Routes>
           <Route path="/" element="Dashboard" />
-          {/* <Route to="/pdashboard" element="Patient Dashboard" />
-          <Route path="/ddashboard" element="Doctor Dashboard" /> */}
+          <Route path="/ddashboard" element="Doctor Dashboard" />
+          <Route path="/pdashboard" element="Patient Dashboard" />
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/doctor" element={<Doctor />} />

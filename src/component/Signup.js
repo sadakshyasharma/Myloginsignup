@@ -8,10 +8,15 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
 import Date from "../date";
+import Navbar from "./Navbar";
+import clsx from "clsx";
+import { usePasswordRules } from "./validations";
+import TaskAltIcon from "@mui/icons-material/TaskAlt";
+import CloseIcon from "@mui/icons-material/Close";
+import { useStyles } from "../myStyles";
 
 
-
-export default function Signup ()  {
+ function Signup ()  {
   const [formData, setFormData] = useState({
     fullName: "",
     gender: "male",
@@ -26,8 +31,49 @@ const [nameError, setNameError] = useState(false);
   const [emailError, setEmailError] = useState(false)
   const [mobileError, setMobileError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
-  const [confirmpasswordError, setConfirmPasswordError] = useState(false);
-
+   const [confirmpasswordError, setConfirmPasswordError] = useState(false);
+   const [passwordShow,setPasswordShow] = useState(false)
+   const myStyle = useStyles();
+ function passwordRules() {
+   return [
+     {
+       name: "lowercase",
+       label: "Must contain lowercase letter",
+       value: lowerCase,
+     },
+     {
+       name: "upperCase",
+       label: "Must contain uppercase letter",
+       value: upperCase,
+     },
+     {
+       name: "specialChar",
+       label: "Must contain special character",
+       value: specialChar,
+     },
+     {
+       name: "hasNumber",
+       label: "Must contain number",
+       value: hasNumber,
+     },
+     {
+       name: "validLength",
+       label: "Password length must be greater than 6",
+       value: validLength,
+     },
+     {
+       name: "matched",
+       label: "Current Password must match Confirm Password",
+       value: matched,
+     },
+   ];
+ }
+   
+const [validLength, hasNumber, upperCase, lowerCase, matched, specialChar] =
+  usePasswordRules({
+    firstPassword: formData.createpassword,
+    secondPassword: formData.confirmPassword,
+  });
 
  const checkFullName = () => {
    setNameError(false);
@@ -85,7 +131,7 @@ const checkPassword = () => {
 
  }
   
- 
+  
   
   passwordValidation();
 
@@ -129,6 +175,7 @@ const checkPassword = () => {
         </Grid>
 
         <Grid item xs={6}>
+          <Navbar currentTab={1} />
           <div className="sectionsignup">
             <h2>Create an account</h2>
 
@@ -256,7 +303,7 @@ const checkPassword = () => {
                   fullWidth
                   variant="outlined"
                   onChange={handleChange}
-                  onBlur={() => checkPassword()}
+                  onFocus={() => setPasswordShow(true)}
                 />
                 {passwordError && (
                   <span style={{ color: "red" }}>{passwordError}</span>
@@ -275,10 +322,36 @@ const checkPassword = () => {
                   fullWidth
                   variant="outlined"
                   onChange={handleChange}
-                  onBlur={() => checkConfirmPassword()}
                 />
-                {confirmpasswordError && (
-                  <span style={{ color: "red" }}>{confirmpasswordError}</span>
+                {passwordShow && (
+                  <ul className={myStyle.ruleList}>
+                    {" "}
+                    {passwordRules().map((rule) => (
+                      <li key={rule.name}>
+                        {" "}
+                        {rule.value ? (
+                          <TaskAltIcon
+                            className={clsx(
+                              myStyle.ruleIcon,
+                              rule.value
+                                ? myStyle.ruleSuccess
+                                : myStyle.ruleFail
+                            )}
+                          />
+                        ) : (
+                          <CloseIcon
+                            className={clsx(
+                              myStyle.ruleIcon,
+                              rule.value
+                                ? myStyle.ruleSuccess
+                                : myStyle.ruleFail
+                            )}
+                          />
+                        )}
+                        <span>{rule.label}</span>{" "}
+                      </li>
+                    ))}{" "}
+                  </ul>
                 )}
               </div>
 
@@ -305,3 +378,4 @@ const checkPassword = () => {
   };
 
 
+export default Signup;

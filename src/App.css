@@ -2,13 +2,13 @@
 display: flex;
 justify-content: flex-end;
 flex-direction: column;
-  width: 50%;
-  margin: none;
+  width: 40%;
+ 
   padding: 70px;
   border: 1px solid rgb(209, 209, 209);
   border-radius: 5px;
   margin-top: 20px;
-  margin-left: 10px;
+  margin-left: 60px;
 }
 
 .imagelogin{
@@ -21,7 +21,7 @@ flex-direction: column;
 }
 
 .sectionlogin {
-display: flex;
+/* display: flex;
 justify-content: flex-end;
 flex-direction: column;
   width: 50%;
@@ -29,8 +29,17 @@ flex-direction: column;
   margin-left: 150px;
   padding: 70px;
   border: 1px solid rgb(209, 209, 209);
+  border-radius: 5px; */
+display: flex;
+justify-content: flex-end;
+flex-direction: column;
+  width: 40%;
+  margin: none;
+  padding: 70px;
+  border: 1px solid rgb(209, 209, 209);
   border-radius: 5px;
-
+  margin-top: 20px;
+  margin-left: 60px;
 
   
 }
@@ -124,31 +133,32 @@ p {
 
 .logsign {
   display: flex;
-     flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  padding: 5px;
-  font-weight: bolder;
-  font-size: x-large;
+     flex-direction: row;
+  justify-content:space-around;
+  /* align-items: center; */
+  /* padding: 5px; */
+  font-weight: bold;
+  font-size: large;
   margin-top: 50px;
- 
-  
+  text-decoration: none;
+   /* border: 1px solid rgb(209, 209, 209);
+  border-radius: 1px;
+   */
+margin-right: 300px;
 }
 
-.logsign .MuiTabs-flexContainer {
-   width: 50%;
-}
+
 .logsign .MuiTab-root {
-   width: 50%;
+   width: auto;
    height: 50px;
    text-align: center;
-     /* border: 1px solid rgb(209, 209, 209);
-  border-radius: 1px; */
+     border: 1px solid rgb(209, 209, 209);
+  border-radius: 1px;
+ 
+  display: flex;
+ 
+
 }
-
-
-
-
 
 .navbar-link {
   color: #333;

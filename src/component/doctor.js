@@ -6,6 +6,7 @@ import { TextField } from "@material-ui/core";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
 
 export default function Signup() {
   const [formData, setFormData] = useState({
@@ -109,6 +110,7 @@ export default function Signup() {
         </Grid>
 
         <Grid item xs={6}>
+          <Navbar currentTab={2} />
           <div className="sectionsignup">
             <h2>Create an account</h2>
 
@@ -121,7 +123,7 @@ export default function Signup() {
                   placeholder="Enter name"
                   required
                   type="text"
-                  maxLength="50"
+                  inputProps={{ maxLength: 50 }}
                   name="fullName"
                   fullWidth
                   value={formData.fullName}
@@ -165,7 +167,7 @@ export default function Signup() {
                   />
                   <span className="radiobtntext"> Other </span>
                 </div>
-                </div>
+              </div>
 
               <div className="signupbox">
                 <div>
@@ -175,7 +177,7 @@ export default function Signup() {
                   placeholder="Enter mobile number"
                   required
                   type="text"
-                  maxLength="10"
+                  inputProps={{ maxLength: 10 }}
                   name="mobile"
                   fullWidth
                   value={formData.mobile}
