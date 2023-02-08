@@ -6,14 +6,19 @@ import { TextField } from "@material-ui/core";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
+import Date from "../date";
 import Navbar from "./Navbar";
+import clsx from "clsx";
+import { usePasswordRules } from "./validations";
+import TaskAltIcon from "@mui/icons-material/TaskAlt";
+import CloseIcon from "@mui/icons-material/Close";
+import { useStyles } from "../myStyles";
 
-export default function Signup() {
+function Signup() {
   const [formData, setFormData] = useState({
     fullName: "",
     gender: "male",
     mobile: "",
-    dob: "2011-01-01",
     email: "",
     createpassword: "",
     confirmpassword: "",
@@ -24,6 +29,48 @@ export default function Signup() {
   const [mobileError, setMobileError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [confirmpasswordError, setConfirmPasswordError] = useState(false);
+  const [passwordShow, setPasswordShow] = useState(false);
+  const myStyle = useStyles();
+  function passwordRules() {
+    return [
+      {
+        name: "lowercase",
+        label: "Must contain lowercase letter",
+        value: lowerCase,
+      },
+      {
+        name: "upperCase",
+        label: "Must contain uppercase letter",
+        value: upperCase,
+      },
+      {
+        name: "specialChar",
+        label: "Must contain special character",
+        value: specialChar,
+      },
+      {
+        name: "hasNumber",
+        label: "Must contain number",
+        value: hasNumber,
+      },
+      {
+        name: "validLength",
+        label: "Password length must be greater than 6",
+        value: validLength,
+      },
+      {
+        name: "matched",
+        label: "Current Password must match Confirm Password",
+        value: matched,
+      },
+    ];
+  }
+
+  const [validLength, hasNumber, upperCase, lowerCase, matched, specialChar] =
+    usePasswordRules({
+      firstPassword: formData.createpassword,
+      secondPassword: formData.confirmpassword,
+    });
 
   const checkFullName = () => {
     setNameError(false);
@@ -46,6 +93,9 @@ export default function Signup() {
   };
 
   const checkMobile = async () => {
+    // if (formData.mobile.length > 10) {
+    //    setMobileError("Please enter a valid 10-digit mobile number!");
+    //  }
     setMobileError(false);
     if (checkEmpty(formData.mobile)) {
       setMobileError("Please enter a valid 10-digit mobile number!");
@@ -57,21 +107,23 @@ export default function Signup() {
       .catch((error) => setMobileError("Mobile number already exists"));
   };
 
-  const checkPassword = () => {
-    setPasswordError(false);
-    setPasswordError(passwordValidation(formData.createpassword));
-  };
+  // const checkPassword = () => {
+  //   setPasswordError(false);
+  //   setPasswordError(passwordValidation(formData.createpassword));
+  // };
 
-  const checkConfirmPassword = () => {
-    setConfirmPasswordError(false);
-    if (checkEmpty(formData.confirmpassword)) {
-      setConfirmPasswordError("Confirm password cannot be empty!");
-    } else if (formData.createpassword !== formData.confirmpassword) {
-      setConfirmPasswordError("Passwords do not match");
-    } else {
-      setPasswordError("");
-    }
-  };
+  //   const checkConfirmPassword = () => {
+  //     setConfirmPasswordError(false);
+  //      if (checkEmpty(formData.confirmpassword)) {
+  //        setConfirmPasswordError("Confirm password cannot be empty!");
+  //     }
+  //    else if (formData.createpassword !== formData.confirmpassword) {
+  //       setConfirmPasswordError("Passwords do not match");
+  //     } else {
+  //       setPasswordError("");
+  //     }
+
+  //  }
 
   passwordValidation();
 
@@ -89,9 +141,6 @@ export default function Signup() {
       const res = await axios.post("http://my-doctors.net:8090/doctors", {
         firstName: formData.fullName,
         gender: formData.gender,
-        profile: {
-          dob: formData.dob,
-        },
         email: formData.email,
         password: formData.createpassword,
         contactNumber: formData.mobile,
@@ -110,7 +159,7 @@ export default function Signup() {
         </Grid>
 
         <Grid item xs={6}>
-          <Navbar currentTab={2} />
+          <Navbar currentTab={1} />
           <div className="sectionsignup">
             <h2>Create an account</h2>
 
@@ -119,6 +168,7 @@ export default function Signup() {
                 <div>
                   <label>Name*</label>
                 </div>
+
                 <TextField
                   placeholder="Enter name"
                   required
@@ -190,6 +240,8 @@ export default function Signup() {
                 )}
               </div>
 
+        
+
               <div className="signupbox">
                 <div>
                   <label>Email*</label>
@@ -222,7 +274,7 @@ export default function Signup() {
                   fullWidth
                   variant="outlined"
                   onChange={handleChange}
-                  onBlur={() => checkPassword()}
+                  onFocus={() => setPasswordShow(true)}
                 />
                 {passwordError && (
                   <span style={{ color: "red" }}>{passwordError}</span>
@@ -241,10 +293,34 @@ export default function Signup() {
                   fullWidth
                   variant="outlined"
                   onChange={handleChange}
-                  onBlur={() => checkConfirmPassword()}
                 />
-                {confirmpasswordError && (
-                  <span style={{ color: "red" }}>{confirmpasswordError}</span>
+                {passwordShow && (
+                  <ul className={myStyle.ruleList}>
+                    {passwordRules().map((rule) => (
+                      <li key={rule.name}>
+                        {rule.value ? (
+                          <TaskAltIcon
+                            className={clsx(
+                              myStyle.ruleIcon,
+                              rule.value
+                                ? myStyle.ruleSuccess
+                                : myStyle.ruleFail
+                            )}
+                          />
+                        ) : (
+                          <CloseIcon
+                            className={clsx(
+                              myStyle.ruleIcon,
+                              rule.value
+                                ? myStyle.ruleSuccess
+                                : myStyle.ruleFail
+                            )}
+                          />
+                        )}
+                        <span>{rule.label}</span>
+                      </li>
+                    ))}
+                  </ul>
                 )}
               </div>
 
@@ -269,3 +345,5 @@ export default function Signup() {
     </Paper>
   );
 }
+
+export default Signup;

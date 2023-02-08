@@ -11,7 +11,9 @@ export const usePasswordRules = ({
   const [lowerCase, setLowerCase] = useState(null);
   const [specialChar, setSpecialChar] = useState(null);
   const [matched, setMatchChar] = useState(null);
-
+ 
+  console.log("first", firstPassword);
+  console.log("second", secondPassword);
   useEffect(() => {
     setValidLength(firstPassword.length >= requiredLength);
     setUpperCase(firstPassword.toLowerCase() !== firstPassword);

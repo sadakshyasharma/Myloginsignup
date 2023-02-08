@@ -72,8 +72,9 @@ const [nameError, setNameError] = useState(false);
 const [validLength, hasNumber, upperCase, lowerCase, matched, specialChar] =
   usePasswordRules({
     firstPassword: formData.createpassword,
-    secondPassword: formData.confirmPassword,
+    secondPassword: formData.confirmpassword,
   });
+   
 
  const checkFullName = () => {
    setNameError(false);
@@ -113,23 +114,23 @@ const [validLength, hasNumber, upperCase, lowerCase, matched, specialChar] =
        );
    };
 
-const checkPassword = () => {
-  setPasswordError(false);
-  setPasswordError(passwordValidation(formData.createpassword));
-};
+// const checkPassword = () => {
+//   setPasswordError(false);
+//   setPasswordError(passwordValidation(formData.createpassword));
+// };
 
-  const checkConfirmPassword = () => {
-    setConfirmPasswordError(false);
-     if (checkEmpty(formData.confirmpassword)) {
-       setConfirmPasswordError("Confirm password cannot be empty!");
-    }
-   else if (formData.createpassword !== formData.confirmpassword) {
-      setConfirmPasswordError("Passwords do not match");
-    } else {
-      setPasswordError("");
-    }
+//   const checkConfirmPassword = () => {
+//     setConfirmPasswordError(false);
+//      if (checkEmpty(formData.confirmpassword)) {
+//        setConfirmPasswordError("Confirm password cannot be empty!");
+//     }
+//    else if (formData.createpassword !== formData.confirmpassword) {
+//       setConfirmPasswordError("Passwords do not match");
+//     } else {
+//       setPasswordError("");
+//     }
 
- }
+//  }
   
   
   
@@ -322,13 +323,14 @@ const checkPassword = () => {
                   fullWidth
                   variant="outlined"
                   onChange={handleChange}
+                  
                 />
                 {passwordShow && (
                   <ul className={myStyle.ruleList}>
-                    {" "}
+                   
                     {passwordRules().map((rule) => (
                       <li key={rule.name}>
-                        {" "}
+                       
                         {rule.value ? (
                           <TaskAltIcon
                             className={clsx(
@@ -348,9 +350,9 @@ const checkPassword = () => {
                             )}
                           />
                         )}
-                        <span>{rule.label}</span>{" "}
+                        <span>{rule.label}</span>
                       </li>
-                    ))}{" "}
+                    ))}
                   </ul>
                 )}
               </div>
