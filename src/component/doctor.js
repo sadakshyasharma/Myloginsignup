@@ -159,7 +159,7 @@ function Signup() {
         </Grid>
 
         <Grid item xs={6}>
-          <Navbar currentTab={1} />
+          <Navbar currentTab={2} />
           <div className="sectionsignup">
             <h2>Create an account</h2>
 
