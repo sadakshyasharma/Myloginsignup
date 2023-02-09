@@ -218,16 +218,16 @@ width: 200px;
 
 }
 
-/* .dobs{
-      margin: '0.3rem 0rem 1rem 0rem',
-      '& > #dropdown-date': {
-        display: 'flex',
-        '& > :not(:first-child)': {
-          marginLeft: '0.5rem',
-        },
-        '& select': {
-          fontSize: '1rem',
-          padding: '0.4rem 0.8rem',
-        },
-      },
+.dashboardimg{
+
+margin-left: 250px;
+
+}
+
+/* .card{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-left: 100px;
 } */
