@@ -18,7 +18,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { color } from "@mui/system";
 
-const drawerWidth = 200;
+const drawerWidth = 250;
 
 function ResponsiveDrawer(props) {
   const { window } = props;
