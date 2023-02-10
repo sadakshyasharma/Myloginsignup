@@ -14,7 +14,7 @@ const Dcard = ({ item ,index}) => {
               <br />
               {item.contactNumber}
 
-              {/* {item.profile} */}
+              {item.profile.qualifications[0].name}
             </Grid>
           </Grid>
         </Paper>
