@@ -28,9 +28,9 @@ const Dcard = ({ item }) => {
       {item.profile.languages.map((lang) => (
         <div className="docdetails">{lang}</div>
       ))}
-      <div>
+      <div> 
         <button className="dbtn" type="submit">
-          Book Appointment
+         BOOK Appointment
         </button>
       </div>
     </section>
