@@ -1,25 +1,40 @@
-import React from 'react'
+import React from "react";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-const Dcard = ({ item ,index}) => {
-    return (
-      <div className="apibox">
-        <Paper>
-          <Grid container>
-            <Grid item xs={6}>
-              <div></div>
-            </Grid>
-            <Grid item xs={6}>
-              {"Dr. " + item.firstName + " " + item.lastName}
-              <br />
-              {item.contactNumber}
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+const Dcard = ({ item }) => {
+  return (
 
-              {item.profile.qualifications[0].name}
-            </Grid>
-          </Grid>
-        </Paper>
+    <section className="apiboxdoctor">
+      <div>
+        <img className="icondoctor" src="images.jpg" />
       </div>
-    );
-}
+
+      <div className="docname">
+        {"Dr. " + item.firstName + " " + item.lastName}
+      </div>
+
+      <div className="docdetails">
+        {item.profile.qualifications.map((qual) => (
+          <p>{qual.name} |</p>
+        ))}
+      </div>
+
+      <div className="docdetails">
+        <p className="doctext">Hospital </p>
+        {item.profile.experience[0].place}
+      </div>
+      <p className="doctext">Languages</p>
+      {item.profile.languages.map((lang) => (
+        <div className="docdetails">{lang}</div>
+      ))}
+      <div>
+        <button className="dbtn" type="submit">
+          Book Appointment
+        </button>
+      </div>
+    </section>
+  );
+};
 
 export default Dcard;

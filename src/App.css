@@ -246,8 +246,8 @@ margin-left: 350px;
 .apibox{
     border: 1px solid rgba(0, 0, 0, 0.12);
         border-radius: 4px;
-            transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
-            justify-content: space-around;
+            /* transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1); */
+            /* justify-content: space-around; */
             margin-bottom: 60px;
             margin-left: none;
             margin-top: none;
@@ -276,3 +276,83 @@ margin-left: 350px;
 .special_:hover{
   color: #3f51b5;
 }
+
+
+/* doc */
+
+.apiboxdoctor{
+    border: 1px solid rgba(0, 0, 0, 0.12);
+        border-radius: 4px;
+            /* transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1); */
+            /* justify-content: space-around; */
+            margin-bottom: 60px;
+            margin-left: none;
+            margin-top: none;
+            width: 25em;
+            height: 25em;
+}
+
+.dbtn{
+    width: 39%;
+ background-color: rgb(255, 255, 255);
+   
+ 
+    padding: 6px 16px;
+    font-size: 0.875rem;
+    min-width: 64px;
+    box-sizing: border-box;
+   
+    
+    line-height: 1.75;
+    
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+    color: #3f51b5;
+    border: 1px solid rgba(63, 81, 181, 0.5);
+     
+ border-radius: 34px;
+    /* text-align: center; */
+    cursor:pointer;
+}
+
+.dbtn:hover{
+color:#344edf;
+border: 1px solid #344edf;
+}
+
+.icondoctor{
+
+width: 123px;
+}
+
+.docname{
+font-size: 16px;
+    font-weight: bold;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    display: flex;
+    flex-direction: column;
+    margin-top: none;
+}
+
+.doctext{
+  font-size: 1.2rem;
+  color: black;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+        display: flex;
+    flex-direction: row;
+
+}
+
+.docdetails{
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+        color: rgba(0, 0, 0, 0.54);
+        font-size: 13px;
+    display: flex;
+    flex-direction: row;
+      }

@@ -43,7 +43,7 @@ if (loading) {
             <div></div>
           </Grid>
 
-          <Grid item xs={9}>
+          <Grid item xs={8}>
             <div className="special">20+ Specialities</div>
             <div className="flexContainer">
               {data &&

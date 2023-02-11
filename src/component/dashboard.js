@@ -46,7 +46,7 @@ const Dashboard = () => {
             <div></div>
           </Grid>
 
-          <Grid item xs={9}>
+          <Grid item xs={8}>
             <div className="special">20+ Specialities</div>
             <div className="flexContainer">
               {data &&
@@ -65,10 +65,10 @@ const Dashboard = () => {
 
 <Paper>
 <Grid container>
-<Grid item xs={2}>
+<Grid item xs={1}>
   <div></div>
 </Grid>
-<Grid item xs={9}>
+<Grid item xs={8}>
             <div>
               
 <DoctorCard />
