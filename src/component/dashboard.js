@@ -7,6 +7,10 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import DoctorCard from "../cards/DoctorCard";
+import { Pagination } from "@mui/material";
+import Swipe from "../cards/swiper/swipe";
+
+
 const api_url = "http://my-doctors.net:8090/specializations?%24limit=8";
 
 const Dashboard = () => {
@@ -37,6 +41,10 @@ const Dashboard = () => {
       <div>
         <StyledDashboard />
       </div>
+      <div style={{marginLeft:"250px"}}>
+      
+        <Swipe />
+      </div>
       <div>
         <img className="dashboardimg" src="dashboard.svg" />
       </div>
@@ -57,29 +65,26 @@ const Dashboard = () => {
                 ))}
             </div>
             <Link to="/specialities" className="special_">
-           View all Specialities...
-          </Link>
+              View all Specialities...
+            </Link>
           </Grid>
         </Grid>
       </Paper>
 
-<Paper>
-<Grid container>
-<Grid item xs={1}>
-  <div></div>
-</Grid>
-<Grid item xs={8}>
+      <Paper>
+        <Grid container>
+          <Grid item xs={1}>
+            <div></div>
+          </Grid>
+          <Grid item xs={8}>
             <div>
-              
-<DoctorCard />
-  </div>
-</Grid>
-  
-</Grid>
+              <DoctorCard />
+            </div>
+          </Grid>
+        </Grid>
+      </Paper>
 
-</Paper>
-
-
+      <Pagination style={{ marginLeft: "500px" }} count={10} color="primary" />
     </section>
   );
 };

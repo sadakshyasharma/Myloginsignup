@@ -6,6 +6,7 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import StyledDashboard from "../component/StyledDashboard"
 import Dcard from "./Dcard"
+import Ddcard from './Ddcard';
 
 
 const api_url = "http://my-doctors.net:8090/doctors?%24limit=12&%24skip=0";
@@ -47,7 +48,7 @@ const DoctorCard = () => {
               {data &&
                 data.map((item) => (
                   <div>
-                    <Dcard item={item} />
+                    <Ddcard item={item} />
                   </div>
                 ))}
             </div>

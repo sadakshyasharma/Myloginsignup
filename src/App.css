@@ -286,10 +286,11 @@ margin-left: 350px;
             /* transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1); */
             /* justify-content: space-around; */
             margin-bottom: 60px;
-            margin-left: none;
+            margin-left: 0;
             margin-top: none;
-            width: 25em;
-            height: 25em;
+            width: 22.5em;
+            height: 150%;
+            
 }
 
 .dbtn{
@@ -321,7 +322,7 @@ border: 1px solid #344edf;
 }
 
 .icondoctor{
-
+display: flex;
 width: 123px;
 }
 
@@ -331,7 +332,8 @@ font-size: 16px;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     display: flex;
     flex-direction: column;
-    margin-top: none;
+  
+    /* margin-top: none; */
 }
 
 .doctext{
@@ -342,8 +344,8 @@ font-size: 16px;
     line-height: 1.5;
     letter-spacing: 0.00938em;
         display: flex;
-    flex-direction: row;
-
+    flex-direction: column;
+ margin-left: 200px;
 }
 
 .docdetails{
@@ -355,4 +357,54 @@ font-size: 16px;
         font-size: 13px;
     display: flex;
     flex-direction: row;
+    margin-left: 200px;
       }
+
+
+
+ .flex1{
+  display: flex;
+  flex-flow: row nowrap;
+  gap: none;
+  margin-bottom: 20px;
+ }
+ /* .flex2{
+    gap: 0.5rem;
+    bottom: 0;
+    display: flex;
+    padding: 0.8rem;
+    position: absolute;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    margin-left: 90px;
+ } */
+
+/* @media screen and (min-width: 30%) {
+  .swipertext {min-width: 500px; float: left;}
+
+} */
+
+ .swipe{
+  margin-left: 10px;
+  background-color: #dbdbdb;
+  margin-bottom: 30px;
+width: 100%;
+
+ 
+ }
+ .swipertext{
+  background-color: #e9e2e2;
+  border: 1px solid #696969;
+  border-radius: 20px;
+  text-align: center;
+margin-top: 20px;
+margin-bottom: 20px;
+min-width: 15%;
+max-width: 20%;
+
+ }
+ .swipertext:hover{
+  color: aliceblue;
+  background-color: #a79f9f;
+  cursor: pointer;
+ }

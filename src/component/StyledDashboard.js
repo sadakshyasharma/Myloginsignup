@@ -17,6 +17,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { color } from "@mui/system";
+import Swipe from "../cards/swiper/swipe";
+
 
 const drawerWidth = 250;
 
@@ -65,7 +67,9 @@ function ResponsiveDrawer(props) {
 
   return (
     <Box sx={{ display: "flex" }}>
+      
       <CssBaseline />
+
       <AppBar
         position="fixed"
         sx={{
@@ -73,9 +77,8 @@ function ResponsiveDrawer(props) {
           ml: { sm: `${drawerWidth}px` },
         }}
       >
-        <Toolbar>
+        <Toolbar style={{ backgroundColor: "white" }}>
           <IconButton
-            color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
@@ -83,11 +86,9 @@ function ResponsiveDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            
-          </Typography>
         </Toolbar>
       </AppBar>
+
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
@@ -112,6 +113,7 @@ function ResponsiveDrawer(props) {
         >
           {drawer}
         </Drawer>
+        
         <Drawer
           variant="permanent"
           sx={{
