@@ -18,6 +18,8 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { color } from "@mui/system";
 import Swipe from "../cards/swiper/swipe";
+import { Link } from "react-router-dom";
+import PlaceHolder from "./PlaceHolder";
 
 
 const drawerWidth = 250;
@@ -67,7 +69,6 @@ function ResponsiveDrawer(props) {
 
   return (
     <Box sx={{ display: "flex" }}>
-      
       <CssBaseline />
 
       <AppBar
@@ -78,6 +79,23 @@ function ResponsiveDrawer(props) {
         }}
       >
         <Toolbar style={{ backgroundColor: "white" }}>
+          <div className="appbar">
+            <div>
+              <a href="/">
+                
+                <img src="image.png" width="150px" />
+              </a>
+            </div>
+
+            <div className="appbarplaceholder">
+              <PlaceHolder />
+            </div>
+            <div className="appbarloginbtn">
+              <Link to="/login">
+                <button className="dashboard_btn">Login</button>
+              </Link>
+            </div>
+          </div>
           <IconButton
             aria-label="open drawer"
             edge="start"
@@ -113,7 +131,7 @@ function ResponsiveDrawer(props) {
         >
           {drawer}
         </Drawer>
-        
+
         <Drawer
           variant="permanent"
           sx={{

@@ -29,7 +29,7 @@ const DoctorCard = () => {
  if (loading) {
    return <p>Loading...</p>;
  }
-    console.log("test",data)
+    // console.log("test",data)
   return (
     <section>
       <div>

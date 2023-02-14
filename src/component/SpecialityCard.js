@@ -20,6 +20,7 @@ async function fetchData() {
   try {
     setLoading(true);
     const response = await axios.get(api_url);
+    // console.log(response.data)
     setData(response.data.data);
     setLoading(false);
   } catch (error) {}

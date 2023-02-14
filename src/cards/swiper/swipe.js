@@ -18,8 +18,8 @@ const Swipe = () => {
       spaceBetween={70}
       slidesPerView={10}
       scrollbar={{ draggable: true }}
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log("slide change")}
+      // onSwiper={(swiper) => console.log(swiper)}
+      // onSlideChange={() => console.log("slide change")}
     >
       <div>
         <SwiperSlide className="swipertext">Dementia</SwiperSlide>
